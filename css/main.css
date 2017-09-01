@@ -36,10 +36,11 @@ body {
 	background: #67BBD5;
 }
 
-#result {
+#output {
 	font-family: 'VT323', monospace;
 	color: white;
 	background: #3B4247;
+	/*background: #2C51AA;*/
 	/*width: 100%;*/
 	padding-top: 100px;
 	padding-right: 10px;
@@ -51,6 +52,7 @@ body {
 
 .row-2 {
 	background: #2C51AA;
+	/*background: #FC5BAE;*/
 }
 
 .btn {
