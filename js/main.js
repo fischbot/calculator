@@ -3,7 +3,7 @@ var btns = document.querySelectorAll('.btn');
 var output = document.getElementById('output');
 var click = new Audio('assets/audio/click.mp3');
 click.volume = 0.2;
-
+var stored = [];
 
 window.onload = function() {
 	for (var i = 0; i < btns.length; i++) {
@@ -102,7 +102,9 @@ function setValues(e) {
 			console.log('/');
 			break;
 		case 'decimal':
-			console.log('.');
+			if (!output.innerText.includes('.')) {
+				output.innerText += '.';
+			}
 			break;
 		case 'equals':
 			console.log('=');
