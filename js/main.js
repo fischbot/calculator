@@ -38,7 +38,6 @@ function setValues(e) {
 			output.innerText = '0';
 			break;
 		case 'neg-pos':
-			console.log('+/-');
 			if (output.innerText.includes('-', 0)) {
 				// remove negative sign;
 				output.innerText = output.innerText.substr(1, output.innerText.length - 1);
@@ -48,7 +47,10 @@ function setValues(e) {
 			}
 			break;
 		case 'percentage':
-			console.log('%');
+			// TODO fix problem where it outputs trailing 0000000001
+			// convert to decimal
+			var conversion = (Number(output.innerText) / 100);
+			output.innerText = conversion;
 			break;
 		case 'addition':
 			console.log('+');
