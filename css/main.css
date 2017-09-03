@@ -61,7 +61,8 @@ body {
 
 }
 
-.operators {
+.operators,
+#equals {
 	background-color: #3EAD32;
 }
 
