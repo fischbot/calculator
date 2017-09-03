@@ -2,90 +2,36 @@
 var btns = document.querySelectorAll('.btn');
 var output = document.getElementById('output');
 var click = new Audio('assets/audio/click.mp3');
-click.volume = 0.2;
+var maxOutputLength = 12;
 
 window.onload = function() {
+	click.volume = 0.2;
+
 	for (var i = 0; i < btns.length; i++) {
 		btns[i].addEventListener('click', function(e) {
 			var elementClicked = e.target;
-			// setValues(elementClicked);
-			if (elementClicked.classList.contains('number') ||
-					elementClicked.id === 'decimal') {
-				if (output.innerText === '0') {
-					output.innerText = '';
-				}
-				output.innerText += elementClicked.innerText;
-			} else {
-				// operators
-			}
-
+				setValues(elementClicked);
 			click.play();
 		}, false);
 	}
 };
 
 function setValues(e) {
-	switch (e.id) {
-		case 'num-0':
-			if (output.innerText === '0') {
-				return;
-			} else {
-				output.innerText += '0';
+	if (e.classList.contains('number')) {
+		if (output.innerText === '0') {
+			clearOutput();
+		}
+		if (output.innerText.length <= maxOutputLength) {
+			output.innerText += e.innerText;
+		}
+	} else {
+			// TODO store input in variable
+		// operators
+		switch (e.id) {
+		 case 'decimal':
+			if (!output.innerText.includes('.')) {
+				output.innerText += '.';
 			}
-			break;
-		case 'num-1':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '1';
-			break;
-		case 'num-2':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '2';
-			break;
-		case 'num-3':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '3';
-			break;
-		case 'num-4':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '4';
-			break;
-		case 'num-5':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '5';
-			break;
-		case 'num-6':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '6';
-			break;
-		case 'num-7':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '7';
-			break;
-		case 'num-8':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '8';
-			break;
-		case 'num-9':
-			if (output.innerText === '0') {
-				clearOutput();
-			}
-			output.innerText += '9';
 			break;
 		case 'clear-allclear':
 			// TODO add clear
@@ -93,6 +39,13 @@ function setValues(e) {
 			break;
 		case 'neg-pos':
 			console.log('+/-');
+			if (output.innerText.includes('-', 0)) {
+				// remove negative sign;
+				output.innerText = output.innerText.substr(1, output.innerText.length - 1);
+			} else {
+				// add negative sign
+				output.innerText = '-' + output.innerText;
+			}
 			break;
 		case 'percentage':
 			console.log('%');
@@ -109,14 +62,10 @@ function setValues(e) {
 		case 'division':
 			console.log('/');
 			break;
-		case 'decimal':
-			if (!output.innerText.includes('.')) {
-				output.innerText += '.';
-			}
-			break;
 		case 'equals':
 			console.log('=');
 			break;
+		}
 	}
 };
 
