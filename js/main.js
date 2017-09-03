@@ -3,13 +3,22 @@ var btns = document.querySelectorAll('.btn');
 var output = document.getElementById('output');
 var click = new Audio('assets/audio/click.mp3');
 click.volume = 0.2;
-var stored = [];
 
 window.onload = function() {
 	for (var i = 0; i < btns.length; i++) {
 		btns[i].addEventListener('click', function(e) {
 			var elementClicked = e.target;
-			setValues(elementClicked);
+			// setValues(elementClicked);
+			if (elementClicked.classList.contains('number') ||
+					elementClicked.id === 'decimal') {
+				if (output.innerText === '0') {
+					output.innerText = '';
+				}
+				output.innerText += elementClicked.innerText;
+			} else {
+				// operators
+			}
+
 			click.play();
 		}, false);
 	}
@@ -43,7 +52,6 @@ function setValues(e) {
 			output.innerText += '3';
 			break;
 		case 'num-4':
-			console.log('4');
 			if (output.innerText === '0') {
 				clearOutput();
 			}
