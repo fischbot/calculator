@@ -42,6 +42,7 @@ function setValues(e) {
 		case 'clear-allclear':
 			// TODO add clear
 			output.innerText = '0';
+			storedNumbers = [];
 			break;
 		case 'neg-pos':
 			if (output.innerText.includes('-', 0)) {
