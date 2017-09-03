@@ -3,6 +3,8 @@ var btns = document.querySelectorAll('.btn');
 var output = document.getElementById('output');
 var click = new Audio('assets/audio/click.mp3');
 var maxOutputLength = 12;
+var storedNumbers = [],
+		operator = '';
 
 window.onload = function() {
 	click.volume = 0.2;
@@ -24,6 +26,10 @@ function setValues(e) {
 		if (output.innerText.length <= maxOutputLength) {
 			output.innerText += e.innerText;
 		}
+	} else if (e.classList.contains('operators')) {
+		storedNumbers.push(Number(output.innerText));
+			operator = e.innerText;
+			output.innerText = '0';
 	} else {
 			// TODO store input in variable
 		// operators
@@ -51,18 +57,6 @@ function setValues(e) {
 			// convert to decimal
 			var conversion = (Number(output.innerText) / 100);
 			output.innerText = conversion;
-			break;
-		case 'addition':
-			console.log('+');
-			break;
-		case 'subtraction':
-			console.log('-');
-			break;
-		case 'multiplication':
-			console.log('x');
-			break;
-		case 'division':
-			console.log('/');
 			break;
 		case 'equals':
 			console.log('=');
