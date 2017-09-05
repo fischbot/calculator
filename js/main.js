@@ -4,7 +4,8 @@ var output = document.getElementById('output');
 var click = new Audio('assets/audio/click.mp3');
 var maxOutputLength = 12;
 var storedNumbers = [],
-		operator = '';
+		operator = '',
+		afterEquals = false;
 
 window.onload = function() {
 	click.volume = 0.2;
@@ -27,8 +28,16 @@ function setValues(e) {
 			output.innerText += e.innerText;
 		}
 	} else if (e.classList.contains('operators')) {
-		storedNumbers.push(Number(output.innerText));
+			if (afterEquals == true) {
+				// if continuing equation after pressing equals key
+				// reset afterEquals
+				afterEquals = false;
+			} else {
+				storedNumbers.push(Number(output.innerText));
+			}
+
 			operator = e.innerText;
+			storedNumbers.push(operator);
 			output.innerText = '0';
 	} else {
 			// TODO store input in variable
@@ -61,6 +70,17 @@ function setValues(e) {
 			break;
 		case 'equals':
 			console.log('=');
+			storedNumbers.push(Number(output.innerText));
+			var expression = storedNumbers.join(' ');
+			console.log(`expression: ${expression}`);
+			storedNumbers = [];
+			var result = eval(expression.toString());
+			output.innerText = result;
+			storedNumbers.push(result);
+			// clearOutput();
+			afterEquals = true;
+			console.log(`storedNumbers: ${storedNumbers}`);
+			console.log(result);
 			break;
 		}
 	}
@@ -70,17 +90,12 @@ function clearOutput() {
 	output.innerText = '';
 }
 
-var numbers = {
-	add : function(a, b) {
-		return a + b;
-	},
-	subtract : function(a, b) {
-		return a - b;
-	},
-	multiply : function(a, b) {
-		return a * b;
-	},
-	divide : function(a, b) {
-		return a / b;
-	}
-};
+
+function evaluate() {
+	// TODO move code from equals
+}
+
+function isUndefined() {
+
+	if (storedNumber)
+}
