@@ -16,9 +16,15 @@ window.onload = function() {
 				setValues(elementClicked);
 			click.play();
 		}, false);
+		btns[i].addEventListener('click', function(e) {clickHandler(e)}, false);
 	}
 };
 
+function clickHandler(e) {
+	var elementClicked = e.target;
+	setValues(elementClicked);
+	click.play();
+}
 function setValues(e) {
 	if (e.classList.contains('number')) {
 		if (output.innerText === '0') {
