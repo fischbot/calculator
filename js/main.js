@@ -44,6 +44,13 @@ function setValues(e) {
 			setOutput(output.innerText += e.innerText);
 		}
 	} else if (e.classList.contains('operators')) {
+			console.log(storedNumbers);
+			if (checkForAccidentalOperator() === true) {
+				console.log('removing last operator');
+				console.log(storedNumbers);
+				clearLast();
+			}
+
 			if (afterEquals == true) {
 				// if continuing equation after pressing equals key
 				afterEquals = false;
@@ -83,6 +90,7 @@ function setValues(e) {
 			// TODO fix problem where it outputs trailing 0000000001
 			// convert to decimal
 			var conversion = (Number(output.innerText) / 100);
+
 			setOutput(conversion);
 			break;
 		case 'equals':
@@ -129,8 +137,18 @@ function setOutput(value) {
 	output.innerText = value;
 }
 
-function clearAccidentalOperator() {
+function checkForAccidentalOperator() {
 	// if the user presses the wrong operator before pressing the one they want
 	// this function removes the incorrect operator and replaces it with the correct one
 	// in the storedNumbers array
+	if (storedNumbers[storedNumbers.length-3] === '+' && storedNumbers[storedNumbers.length-2] === 0 ||
+			storedNumbers[storedNumbers.length-3] === '-' && storedNumbers[storedNumbers.length-2] === 0 ||
+			storedNumbers[storedNumbers.length-3] === '*' && storedNumbers[storedNumbers.length-2] === 0 ||
+			storedNumbers[storedNumbers.length-3] === '/' && storedNumbers[storedNumbers.length-2] === 0) {
+		return true;
+	}
+}
+
+function clearLast() {
+	storedNumbers.pop();
 }
