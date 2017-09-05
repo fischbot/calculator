@@ -14,6 +14,11 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#ffbaf5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+button {
+	font-size: 1.5em;
+	font-family: 'Share Tech Mono', monospace;
+	outline: none;
+}
 .container {
 	max-width: 500px;
 	margin: 100px auto 0;
@@ -55,6 +60,7 @@ body {
 .btn {
 	padding: 40px;
 	border: 1px solid #284A54;
+}
 
 }
 
@@ -77,4 +83,8 @@ body {
 
 .highlighted {
 	border: 3px solid #CF68D5;
+	.btn {
+		font-size: 30px;
+		padding: 30px;
+	}
 }
