@@ -16,6 +16,9 @@ button {
 	font-size: 1.5em;
 	font-family: 'Share Tech Mono', monospace;
 	outline: none;
+	padding: 40px;
+	border: 1px solid #284A54;
+	box-shadow: inset -1px -2px 20px 1px #112f45;
 }
 
 .container {
@@ -23,6 +26,7 @@ button {
 	margin: 100px auto 0;
 	text-align: center;
 	box-shadow: 0px 0px 25px #434B50;
+	background: #3A4247;
 }
 
 .row {
@@ -50,11 +54,6 @@ button {
 	color: white;
 }
 
-.btn {
-	padding: 40px;
-	border: 1px solid #284A54;
-}
-
 #num-0 {
 	grid-column-start: 1;
 	grid-column-end: 3;
@@ -72,6 +71,7 @@ button {
 .operators,
 #equals {
 	background-color: #3EAD32;
+	box-shadow: inset -1px -2px 7px 1px #244a1f;
 }
 
 @media (max-width: 500px) {
@@ -85,3 +85,6 @@ button {
 	}
 }
 
+.btn:active {
+	transform: translateY(1px);
+}
