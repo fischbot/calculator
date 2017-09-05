@@ -59,6 +59,7 @@ function setValues(e) {
 			}
 
 			operator = e.innerText;
+			operator = e.value;
 			storedNumbers.push(operator);
 			setOutput('0');									// TODO change this
 	} else {
