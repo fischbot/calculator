@@ -6,6 +6,8 @@ var maxOutputLength = 12;
 var storedNumbers = [],
 		operator = '',
 		afterEquals = false;
+		afterEquals = false,
+		isUndefined = false;
 
 window.onload = function() {
 	click.volume = 0.2;
@@ -33,7 +35,14 @@ function clickHandler(e) {
 	setValues(elementClicked);
 	click.play();
 }
+
 function setValues(e) {
+	if (isUndefined === true) {
+		clearOutput();
+		storedNumbers = [];
+		isUndefined = false;
+	}
+
 	if (e.classList.contains('number')) {
 		if (output.innerText === '0') {
 			clearOutput();
@@ -69,6 +78,7 @@ function setValues(e) {
 		case 'clear-allclear':
 			// TODO add clear
 			// output.innerText = '0';
+			isUndefined = false;
 			setOutput('0');
 			storedNumbers = [];
 			break;
@@ -100,6 +110,8 @@ function setValues(e) {
 				// if division by 0 is attempted
 				console.log('division by 0 is undefined');
 				// output.innerText = 'undefined';
+			isDividedByZero();
+			if (isUndefined === true) {
 				setOutput('undefined');
 				// TODO grey out all keys except AC
 			} else {
@@ -132,9 +144,12 @@ function evaluate() {
 }
 
 function isUndefined() {
+// Function to see if the user is attempting to divide by 0
+function isDividedByZero() {
 	var sliced = storedNumbers.slice(storedNumbers.length - 2);
 	if (sliced[0] === '/' && sliced[1] == '0') {
 		return true;
+		isUndefined = true;
 	}
 }
 
