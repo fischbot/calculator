@@ -25,7 +25,8 @@ function setValues(e) {
 			clearOutput();
 		}
 		if (output.innerText.length <= maxOutputLength) {
-			output.innerText += e.innerText;
+			// output.innerText += e.innerText;
+			setOutput(e.innerText);
 		}
 	} else if (e.classList.contains('operators')) {
 			if (afterEquals == true) {
@@ -38,50 +39,43 @@ function setValues(e) {
 
 			operator = e.innerText;
 			storedNumbers.push(operator);
-			output.innerText = '0';
+			//output.innerText = '0';					// TODO change this
+			setOutput('0');
 	} else {
-			// TODO store input in variable
 		// operators
 		switch (e.id) {
 		 case 'decimal':
 			if (!output.innerText.includes('.')) {
-				output.innerText += '.';
+				// output.innerText += '.';
+				setOutput('.');
 			}
 			break;
 		case 'clear-allclear':
 			// TODO add clear
-			output.innerText = '0';
+			// output.innerText = '0';
+			setOutput('0');
 			storedNumbers = [];
 			break;
 		case 'neg-pos':
 			if (output.innerText.includes('-', 0)) {
 				// remove negative sign;
-				output.innerText = output.innerText.substr(1, output.innerText.length - 1);
+				// output.innerText = output.innerText.substr(1, output.innerText.length - 1);
+				setOutput(output.innerText.substr(1, output.innerText.length - 1));
 			} else {
 				// add negative sign
-				output.innerText = '-' + output.innerText;
+				// output.innerText = '-' + output.innerText;
+				setOutput('-' + output.innerText)
 			}
 			break;
 		case 'percentage':
 			// TODO fix problem where it outputs trailing 0000000001
 			// convert to decimal
 			var conversion = (Number(output.innerText) / 100);
-			output.innerText = conversion;
+			// output.innerText = conversion;
+			setOutput(conversion);
 			break;
 		case 'equals':
-			console.log('=');
 			storedNumbers.push(Number(output.innerText));
-			var expression = storedNumbers.join(' ');
-			console.log(`expression: ${expression}`);
-			storedNumbers = [];
-			var result = eval(expression.toString());
-			output.innerText = result;
-			storedNumbers.push(result);
-			// clearOutput();
-			afterEquals = true;
-			console.log(`storedNumbers: ${storedNumbers}`);
-			console.log(result);
-			break;
 
 			if (isUndefined()) {
 				// if division by 0 is attempted
@@ -125,5 +119,6 @@ function isUndefined() {
 	}
 }
 
-	if (storedNumber)
+function setOutput(value) {
+	output.innerText = value;
 }
