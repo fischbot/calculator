@@ -22,6 +22,14 @@ window.onload = function() {
 
 function clickHandler(e) {
 	var elementClicked = e.target;
+	for (var i = 0; i < btns.length; i++) {
+		if (btns[i].classList.contains('highlighted')) {
+			btns[i].classList.remove('highlighted');
+		} else {
+			elementClicked.classList.add('highlighted');
+		}
+	}
+
 	setValues(elementClicked);
 	click.play();
 }

@@ -12,9 +12,6 @@ body {
 	background: -webkit-linear-gradient(-45deg,  rgba(125,185,232,1) 0%,rgba(255,186,245,1) 97%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(135deg,  rgba(125,185,232,1) 0%,rgba(255,186,245,1) 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#ffbaf5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-
-
 }
 
 .container {
@@ -76,4 +73,8 @@ body {
 	body {
 		font-size: 28px;
 	}
+}
+
+.highlighted {
+	border: 3px solid #CF68D5;
 }
