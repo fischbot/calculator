@@ -82,6 +82,29 @@ function setValues(e) {
 			console.log(`storedNumbers: ${storedNumbers}`);
 			console.log(result);
 			break;
+
+			if (isUndefined()) {
+				// if division by 0 is attempted
+				console.log('division by 0 is undefined');
+				// output.innerText = 'undefined';
+				setOutput('undefined');
+				// TODO grey out all keys except AC
+			} else {
+				var expression = storedNumbers.join(' ');
+				storedNumbers = [];
+				var result = 0;
+				if (Number.isInteger(eval(expression))) {
+					result = eval(expression);
+				} else {
+					// if result is a float set the amount of digits after decimal
+					result = eval(expression).toFixed(9);
+					// TODO remove trailing zeros
+				}
+				// output.innerText = result;
+				setOutput(result);
+				storedNumbers.push(result);
+				afterEquals = true;
+			}
 		}
 	}
 };
@@ -96,6 +119,11 @@ function evaluate() {
 }
 
 function isUndefined() {
+	var sliced = storedNumbers.slice(storedNumbers.length - 2);
+	if (sliced[0] === '/' && sliced[1] == '0') {
+		return true;
+	}
+}
 
 	if (storedNumber)
 }
