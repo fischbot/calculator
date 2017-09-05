@@ -3,9 +3,7 @@
 }
 
 body {
-	font-size: 36px;
-	font-family: 'Share Tech Mono', monospace;
-	/*background: #FFBAF5;*/
+	font-size: 24px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7db9e8+0,ffbaf5+97 */
 	background: rgb(125,185,232); /* Old browsers */
 	background: -moz-linear-gradient(-45deg,  rgba(125,185,232,1) 0%, rgba(255,186,245,1) 97%); /* FF3.6-15 */
@@ -19,6 +17,7 @@ button {
 	font-family: 'Share Tech Mono', monospace;
 	outline: none;
 }
+
 .container {
 	max-width: 500px;
 	margin: 100px auto 0;
@@ -39,22 +38,16 @@ button {
 }
 
 #output {
-	font-family: 'VT323', monospace;
-	color: white;
 	background: #3B4247;
-	/*background: #2C51AA;*/
-	/*width: 100%;*/
 	padding-top: 100px;
 	padding-right: 10px;
 	text-align: right;
 	font-size: 2.4em;
 	grid-column-start: 1;
 	grid-column-end: 5;
-}
-
-.row-2 {
-	background: #2C51AA;
-	/*background: #FC5BAE;*/
+	font-family: 'VT323', monospace;
+	font-size: 2.5em;
+	color: white;
 }
 
 .btn {
@@ -62,29 +55,33 @@ button {
 	border: 1px solid #284A54;
 }
 
-}
-
-.operators,
-#equals {
-	background-color: #3EAD32;
-}
-
-
 #num-0 {
 	grid-column-start: 1;
 	grid-column-end: 3;
 }
 
-@media (max-width: 500px) {
-	body {
-		font-size: 28px;
-	}
-}
-
 .highlighted {
 	border: 3px solid #CF68D5;
+}
+
+.row-2 button {
+	background: #2C51AA;
+}
+
+.row-2 #division,
+.operators,
+#equals {
+	background-color: #3EAD32;
+}
+
+@media (max-width: 500px) {
+	body {
+		font-size: 22px;
+	}
+
 	.btn {
 		font-size: 30px;
 		padding: 30px;
 	}
 }
+
