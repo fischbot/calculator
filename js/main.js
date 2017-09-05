@@ -47,6 +47,7 @@ function setValues(e) {
 			storedNumbers.push(operator);
 			//output.innerText = '0';					// TODO change this
 			setOutput('0');
+			setOutput('0');									// TODO change this
 	} else {
 		// operators
 		switch (e.id) {
@@ -54,6 +55,7 @@ function setValues(e) {
 			if (!output.innerText.includes('.')) {
 				// output.innerText += '.';
 				setOutput('.');
+				setOutput(output.innerText += '.');
 			}
 			break;
 		case 'clear-allclear':
@@ -71,6 +73,9 @@ function setValues(e) {
 				// add negative sign
 				// output.innerText = '-' + output.innerText;
 				setOutput('-' + output.innerText)
+				if (output.innerText !== '0') {
+					setOutput('-' + output.innerText)
+				}
 			}
 			break;
 		case 'percentage':
