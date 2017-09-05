@@ -1,5 +1,6 @@
 // all operator and number buttons
 var btns = document.querySelectorAll('.btn');
+var jsCalc = document.getElementById('js');
 var output = document.getElementById('output');
 var click = new Audio('assets/audio/click.mp3');
 var maxOutputLength = 12;
@@ -10,10 +11,87 @@ var storedNumbers = [],
 
 window.onload = function() {
 	click.volume = 0.2;
+
+	window.addEventListener('keydown', keydownHandler, false);
+
 	for (var i = 0; i < btns.length; i++) {
-		btns[i].addEventListener('click', function(e) {clickHandler(e)}, false);
+		btns[i].addEventListener('click', function(e) {clickHandler(e);}, false);
 	}
 };
+
+function keydownHandler(event) {
+	switch(event.keyCode) {
+		case 48:    // 0
+		case 96:
+			setOutput(output.innerText += 0);
+			break;
+		case 49:    // 1
+		case 97:
+			setOutput(output.innerText += 1);
+			break;
+		case 50:    // 2
+		case 98:
+			setOutput(output.innerText += 2);
+			break;
+		case 51:    // 3
+		case 99:
+			setOutput(output.innerText += 3);
+			break;
+		case 52:    // 4
+		case 100:
+			setOutput(output.innerText += 4);
+			break;
+		case 53:    // 5
+		case 101:
+			setOutput(output.innerText += 5);
+			break;
+		case 54:    // 6
+		case 102:
+			setOutput(output.innerText += 6);
+			break;
+		case 55:    // 7
+		case 103:
+			setOutput(output.innerText += 7);
+			break;
+		case 56:    // 8
+		case 104:
+			setOutput(output.innerText += 8);
+			break;
+		case 57:    // 9
+		case 105:
+			setOutput(output.innerText += 9);
+			break;
+		case 106:    // *
+
+			break;
+		case 107:    // +
+			break;
+
+		case 109:    // -
+
+			break;
+		case 111:    // /
+
+			break;
+		case 110:    // .
+
+			break;
+		case 49:    // +/- (m)
+			// TODO
+			break;
+		case 187:    // =
+
+			break;
+		case 219:    // (
+			break;
+		case 221:    // )
+			break;
+		case 46:     // delete
+		case 8:
+			setOutput(0);
+			break;
+	}
+}
 
 function clickHandler(e) {
 	var elementClicked = e.target;
@@ -22,8 +100,11 @@ function clickHandler(e) {
 			btns[i].classList.remove('highlighted');
 		} else {
 			elementClicked.classList.add('highlighted');
+			elementClicked.style
 		}
 	}
+
+
 
 	setValues(elementClicked);
 	click.play();
@@ -44,12 +125,10 @@ function setValues(e) {
 			setOutput(output.innerText += e.innerText);
 		}
 	} else if (e.classList.contains('operators')) {
-			console.log(storedNumbers);
-			if (checkForAccidentalOperator() === true) {
-				console.log('removing last operator');
-				console.log(storedNumbers);
-				clearLast();
-			}
+			// if (checkForAccidentalOperator() === true) {
+			// 	console.log(storedNumbers);
+			// 	clearLast();
+			// }
 
 			if (afterEquals == true) {
 				// if continuing equation after pressing equals key
@@ -57,8 +136,6 @@ function setValues(e) {
 			} else {
 				storedNumbers.push(Number(output.innerText));
 			}
-
-			operator = e.innerText;
 			operator = e.value;
 			storedNumbers.push(operator);
 			setOutput('0');									// TODO change this
